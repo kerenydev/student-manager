@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ניהול תלמידים</title>
+  <link rel="stylesheet" href="loginstyles.css" />
+</head>
+<body>
+
+  <section class="login-card">
+      <h1>ניהול תלמידים</h1>
+      <p class="muted">התחברות למורים</p>
+      <form id="loginForm" class="form-stack">
+        <label>שם מלא<input id="loginName" required autocomplete="name"/></label>
+        <label>מספר תעודת זהות<input id="loginId" required inputmode="numeric"/></label>
+        <button class="primary-btn" type="submit">כניסה למערכת</button>
+        <p class="demo-hint">משתמש לבדיקה: <b>Keren Yissachar</b> · <b>123456789</b></p>
+        <p id="loginError" class="error-text"></p>
+      </form>
+  </section>
+
+  <script src="login.js"></script>
+  
+</body>
+</html>

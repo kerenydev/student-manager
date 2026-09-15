@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ניהול תלמידים</title>
+  <link rel="stylesheet" href="appstyles.css" />
+</head>
+<body>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <main class="app">
+    <aside class="sidebar">
+      <div class="sidebar-brand"><small>ניהול תלמידים</small></div>
+      <nav>
+        <button class="nav-item active"><span>תלמידים</span></button>
+      </nav>
+      <div class="sidebar-footer">
+        <div><small>מחובר/ת בתור</small><strong id="teacherName"></strong></div>
+        <button id="logoutBtn" class="ghost-btn" type="button">התנתקות</button>
+      </div>
+    </aside>
+
+    <section class="content-shell">
+      <header class="topbar">
+        <div>
+          <h1 id="pageTitle">התלמידים שלי</h1>
+        </div>
+        <button id="addStudentBtn" class="primary-btn compact">+ תלמיד חדש</button>
+      </header>
+
+      <div id="studentsPage">
+        <section class="stats-grid">
+          <article><span>מספר תלמידים</span><strong id="studentsCount">0</strong></article>
+          <article><span>מטלות פתוחות</span><strong id="openAssignmentsCount">0</strong></article>
+          <article><span>ממוצע ציונים</span><strong id="avgGrade">—</strong></article>
+        </section>
+        <section class="panel">
+          <div class="panel-head"><div><h2>רשימת תלמידים</h2><p class="muted">בחרו תלמיד כדי לצפות בפרטים ובמטלות</p></div><input id="studentSearch" class="search" placeholder="חיפוש תלמיד..." /></div>
+          <div id="studentsList" class="student-grid"></div>
+          <div id="studentsEmpty" class="empty-state hidden"><h3>עדיין אין תלמידים</h3><p>הוסיפו את התלמיד הראשון שלכם</p></div>
+        </section>
+      </div>
+
+      <div id="studentPage" class="hidden">
+        <button id="backBtn" class="back-btn">→ חזרה לרשימת התלמידים</button>
+        <section class="student-profile panel">
+          <div class="avatar" id="studentAvatar">ST</div>
+          <div class="profile-main"><p class="eyebrow">פרופיל תלמיד</p><h2 id="profileName"></h2><p id="profileMeta" class="muted"></p></div>
+          <button id="editStudentBtn" class="secondary-btn">עריכת פרטים</button>
+        </section>
+        <section class="panel">
+          <div class="panel-head"><div><h2>מטלות וציונים</h2><p class="muted">ניהול המטלות של התלמיד</p></div><button id="addAssignmentBtn" class="primary-btn compact">+ מטלה חדשה</button></div>
+          <div class="table-wrap"><table><thead><tr><th>מטלה</th><th>תאריך הגשה</th><th>סטטוס</th><th>ציון</th><th></th></tr></thead><tbody id="assignmentsBody"></tbody></table></div>
+          <div id="assignmentsEmpty" class="empty-state hidden"><h3>אין עדיין מטלות</h3><p>הוסיפו מטלה חדשה לתלמיד.</p></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="studentDialog" class="modal">
+    <form id="studentForm" method="dialog">
+      <div class="modal-head"><div><h2 id="studentDialogTitle">תלמיד חדש</h2></div><button type="button" class="icon-btn close-dialog">×</button></div>
+      <input type="hidden" id="studentId" />
+      <label>שם<input id="studentName" required /></label>
+      <label>כיתה<input id="studentClass" required placeholder="למשל: ו׳2" /></label>
+      <label>מספר טלפון<input id="studentPhone" required inputmode="tel" /></label>
+      <div class="modal-actions"><button type="button" class="secondary-btn close-dialog">ביטול</button><button type="submit" class="primary-btn">שמירה</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="assignmentDialog" class="modal">
+    <form id="assignmentForm" method="dialog">
+      <div class="modal-head"><div><p class="eyebrow">Assignment</p><h2 id="assignmentDialogTitle">מטלה חדשה</h2></div><button type="button" class="icon-btn close-assignment-dialog">×</button></div>
+      <input type="hidden" id="assignmentId" />
+      <label>שם המטלה<input id="assignmentTitle" required /></label>
+      <label>תאריך הגשה<input id="assignmentDueDate" type="date" required /></label>
+      <label>סטטוס<select id="assignmentStatus"><option value="todo">לביצוע</option><option value="submitted">הוגשה</option></select></label>
+      <label>ציון (אופציונלי)<input id="assignmentGrade" type="number" min="0" max="100" placeholder="0-100" /></label>
+      <div class="modal-actions"><button type="button" class="secondary-btn close-assignment-dialog">ביטול</button><button type="submit" class="primary-btn">שמירה</button></div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+  
+</body>
+</html>
