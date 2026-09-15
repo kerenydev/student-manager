@@ -65,3 +65,13 @@ student-manager/
 └── README.md
 
 קובץ `students.db` נוצר אוטומטית בהרצה הראשונה ואינו נדרש מראש.
+
+## Live Demo
+
+המערכת זמינה לצפייה בקישור:
+
+[Live Demo] https://student-manager-9j92.onrender.com/
+
+### משתמש לבדיקה
+- **שם:** Keren Yissachar
+- **תעודת זהות:** 123456789
